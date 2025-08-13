@@ -1,5 +1,4 @@
-
-<DOCTYPE html>
+ <DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +13,7 @@
             padding: 0;
             line-height: 1.6;
             color: #f0f0f0;
-            transition: background 0.5s ease;
+            background-color: #222; /* Solid dark background */
         }
 
         .container {
@@ -83,7 +82,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: background 0.5s ease;
+            transition: background-color 2s ease-in-out; /* Slow transition for color change */
         }
 
         header .container {
@@ -100,12 +99,28 @@
             overflow: hidden;
             margin-bottom: 15px;
             border: 5px solid #d90000; /* Red border */
+            
+            /* Initial state for animation */
+            transform: scale(0.5);
+            opacity: 0;
+            animation: fadeInAndScale 10s forwards;
         }
         
         .logo-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        
+        @keyframes fadeInAndScale {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
         
         .logo h1 {
@@ -306,7 +321,7 @@
             color: #ccc;
             padding: 40px 0 20px;
             text-align: center;
-            transition: background 0.5s ease;
+            background-color: #000; /* Solid background */
         }
 
         .footer-content {
@@ -396,7 +411,7 @@
     <header>
         <div class="container">
             <div class="logo-image">
-                <img src="n.jpeg" alt="Neri Emergency Loans Logo">
+                <img src="n.jpeg"alt="Neri Emergency Loans Logo">
             </div>
             <div class="logo">
                 <h1>Neri Emergency Loans</h1>
@@ -532,7 +547,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Neri Emergency Loans. All Rights Reserved. May God bless you in Jesus' name. Amen.</p>
+                <p>&copy; 2025 Neri Emergency Loans. All Rights Reserved. May God bless you in Jesus' name. Amen.</p>
             </div>
         </div>
     </footer>
@@ -555,18 +570,8 @@
             contactForm.addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent default form submission
 
-                // Here you would typically send the form data to a server
-                // For this example, we'll just show a success message
-                
-                // Get form values (if needed)
-                const name = document.getElementById('name').value;
-                const phone = document.getElementById('phone').value;
-                const message = document.getElementById('message').value;
-
-                // Simulate a successful submission
                 showNotification('Your message has been sent successfully!');
 
-                // Clear the form
                 contactForm.reset();
             });
 
@@ -579,31 +584,21 @@
                 }, 3000);
             }
 
-            // Animated color change for background, header, and footer
+            // Animated color change for header only
+            const header = document.querySelector('header');
             const colors = ['#000000', '#fcdc04', '#d90000'];
             let colorIndex = 0;
 
-            function changeColors() {
-                // Change body background color
-                document.body.style.backgroundColor = colors[colorIndex];
-                
-                // Change header background color
-                document.querySelector('header').style.backgroundColor = colors[colorIndex];
-                
-                // Change footer background color
-                document.querySelector('footer').style.backgroundColor = colors[colorIndex];
-                
+            function changeHeaderColor() {
+                header.style.backgroundColor = colors[colorIndex];
                 colorIndex = (colorIndex + 1) % colors.length;
             }
 
-            // Change colors every 5 seconds (5000 milliseconds)
-            setInterval(changeColors, 5000);
+            // Change header color every 5 seconds (5000 milliseconds)
+            setInterval(changeHeaderColor, 5000);
         });
     </script>
 </body>
 </html>
-
-
-
-
-
+          
+         
